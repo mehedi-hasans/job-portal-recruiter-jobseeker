@@ -4,10 +4,20 @@ from .models import *
 # Create your views here.
 
 def signupPage(request):
-    
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        display_name = request.POST.get('display_name')
+        email = request.POST.get('email')
+        user_type = request.POST.get('user_type')
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        user = CustomUser.objects.create_user(username = username, display_name = display_name, email=email, user_type = user_type, password=password)
+        user.save()
+        return redirect('loginPage')
     return render(request, 'signup.html')
 
 def loginPage(request):
+
     return render(request, 'login.html')
 
 def logoutPage(request):
