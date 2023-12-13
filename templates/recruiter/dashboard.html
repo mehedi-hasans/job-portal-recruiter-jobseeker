@@ -32,12 +32,18 @@
           <a class="nav-link" href="#">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" href="{% url 'logoutPage' %}">Logout</a>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+{{myUser}}
+
+{% for i in teacher.names reversed %}
+{{forloop.counter}} {{i}} <br>
+{% endfor %}
+
 
 <!-- Your page content goes here -->
 

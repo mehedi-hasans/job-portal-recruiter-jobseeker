@@ -111,4 +111,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = 'jobApp.CustomUser'
+
+LOGIN_URL = 'logoutPage'
+AUTH_USER_MODEL = 'jobApp.CustomUser' 
