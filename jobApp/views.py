@@ -34,27 +34,11 @@ def logoutPage(request):
 
 @login_required
 def dashboard(request):
-    user = request.user
-    if user.is_authenticated:
-        if user.user_type == 'recruiter':
-            teacher = {'names': ['mehedi', 'hasan', 'sami', 'ali']}
-            context = {
-                'myUser': 'Hi I am a Recruiter',
-                'teacher': teacher
-            }
-            return render(request, 'recruiter/dashboard.html', context)
-        elif user.user_type =='jobseeker':
-            context = {
-                'myUser': 'Hi I am a Jobseeker'
-            }
-            return render(request, 'jobseeker/dashboard.html', context)
-        else:
-            return HttpResponse('Invalid User')
+        return render(request, 'dashboard.html')
 
-    else:
-        return HttpResponse('User is not Authenticated')
-
-
+@login_required
+def viewJob(request):
+        return render(request, 'viewjob.html')
 
 
 # {% if user.is_authenticated %}

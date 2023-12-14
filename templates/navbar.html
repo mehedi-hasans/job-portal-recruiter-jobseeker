@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <title>Your Website</title>
-</head>
-<body>
-<header class='bg-dark'>
-    
+  
 <nav class="navbar container navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Your Website</a>
     
@@ -22,12 +11,19 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
         </li>
+        {% if user.user_type == 'recruiter' %}
         <li class="nav-item">
           <a class="nav-link" href="#">Add Job</a>
         </li>
+        {% endif %}
         <li class="nav-item">
-          <a class="nav-link" href="#">View Job</a>
+          <a class="nav-link" href="{% url 'viewJob' %}">View Job</a>
         </li>
+        {% if user.user_type == 'jobseeker' %}
+        <li class="nav-item">
+          <a class="nav-link" href="#">Applied Job</a>
+        </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" href="#">Profile</a>
         </li>
@@ -37,20 +33,3 @@
       </ul>
     </div>
   </nav>
-</header>
-{{myUser}}
-
-{% for i in teacher.names reversed %}
-{{forloop.counter}} {{i}} <br>
-{% endfor %}
-
-
-<!-- Your page content goes here -->
-
-<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>

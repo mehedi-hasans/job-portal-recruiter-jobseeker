@@ -10,7 +10,6 @@ class CustomUser(AbstractUser):
     display_name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
-    confirm_password = models.CharField(max_length=100)
     user_type = models.CharField(choices=USER, max_length=100)
     def __str__(self):
         return self.display_name
