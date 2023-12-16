@@ -6,3 +6,5 @@ class Custom_User_Display(admin.ModelAdmin):
 
 
 admin.site.register(CustomUser, Custom_User_Display)
+admin.site.register(JobModel)
+admin.site.register(CareerModel)
