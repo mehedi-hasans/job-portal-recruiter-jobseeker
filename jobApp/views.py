@@ -5,6 +5,7 @@ from jobApp.forms import JobCreateForm
 from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -59,6 +60,17 @@ def viewJob(request):
 @login_required
 # @user_passes_test(is_recruiter)
 def addJob(request):
+    form = JobCreateForm(request.POST, request.FILES)
+    if form.is_valid():
+        job = JobModel(
+            title=form.cleaned_data['job_title'],
+            company_name=form.cleaned_data['company_name'],
+            location=form.cleaned_data['location'],
+            description=form.cleaned_data['description'],
+            job_image=form.cleaned_data['job_image'],
+            job_creator=request.user,
+        )
+        job.save()
     form = JobCreateForm()
     user = request.user
     if user.is_authenticated:
@@ -68,7 +80,32 @@ def addJob(request):
          return HttpResponse('User is not authenticate')
     return HttpResponse('User is not recruiter')
 
-# {% if user.is_authenticated %}
-#     logout
-#     register
-# {% else %}
+def deletePage(request, myid):
+    job = JobModel.objects.filter(id = myid).delete()
+    return redirect('viewJob')
+
+def editPage(request, myid):
+    job = JobModel.objects.filter(id = myid)
+    return render(request, 'recruiter/editJob.html', {'job': job})
+
+def updatePage(request):
+    user =request.user
+    if request.method == 'POST':
+        job_id = request.POST.get('jobid')
+        title = request.POST.get('title')
+        company_name = request.POST.get('company_name')
+        location = request.POST.get('location')
+        description = request.POST.get('description')
+        job_image = request.FILES.get('job_image')
+        job = JobModel(
+            id = job_id,
+            title = title,
+            company_name = company_name,
+            location = location,
+            description = description,
+            job_image = job_image,
+            job_creator = user
+        )
+        job.save()
+    return render(request, 'dashboard.html')
+

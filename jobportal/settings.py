@@ -118,4 +118,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_URL = 'logoutPage'
+
 AUTH_USER_MODEL = 'jobApp.CustomUser' 

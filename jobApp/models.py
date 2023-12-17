@@ -21,7 +21,7 @@ class JobModel(models.Model):
     location = models.CharField(max_length=100, null=True)
     description = models.TextField()
     job_image = models.ImageField(upload_to='media',  blank=True, null=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True, null= True)
     job_creator = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -31,3 +31,5 @@ class JobModel(models.Model):
 class CareerModel(models.Model):
     title = models.CharField(max_length=100)
     careerImage = models.ImageField(upload_to='media/career', blank=True, null=True)
+    def __str__(self):
+        return self.title

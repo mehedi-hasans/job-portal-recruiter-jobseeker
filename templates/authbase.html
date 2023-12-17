@@ -173,84 +173,21 @@ login-wrapper .loginbox .login-right .dont-have a {
 .login-wrapper .loginbox .login-right .dont-have a {
   color: #333;
 }
-
+.form-group {
+    margin-bottom: 0rem;
+}
+#register{
+    max-width: 1079px;
+}
   </style>
 </head>
-  <body class="main-wrapper login-body">
-    <div class="login-wrapper">
-        <div class="container">
-            <div class="loginbox row">
-                <div class="login-left col-md-6">
-                    <img class="img-fluid" src="{% static 'img/logo.png' %}" alt="Logo">
-                </div>
-                <div class="login-right col-md-6">
-                    <div class="login-right-wrap">
-                        <h1>Login</h1>
-                        <p class="account-subtitle">Access to our dashboard</p>
+<body class="main-wrapper login-body">
 
-                       
+{% block form %}
 
-                        <form method='POST'>
-                          {% csrf_token %}
-                          <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
-                          </div>
-                          <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                          </div>
-                          <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" id="remember_me">
-                            <label class="form-check-label" for="remember_me">Remember me</label>
-                          </div>
-                          <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </form>
-                        <div class="text-center forgotpass"><a href="forgot-password.html">Forgot Password?</a></div>
-                        <div class="login-or">
-                            <span class="or-line"></span>
-                            <span class="span-or">or</span>
-                        </div>
-                        <div class="social-login">
-                            <span>Login with</span>
-                            <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a><a href="#" class="google"><i class="fab fa-google"></i></a>
-                        </div>
-                        <div class="text-center dont-have">Don’t have an account? <a href="{% url 'signupPage' %}">Register</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+{% endblock form %}
 
 
-{% comment %} <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-12 login-container">
-      <h2 class="mb-4 text-center">Login</h2>
-      <form method='POST'>
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="remember_me">
-          <label class="form-check-label" for="remember_me">Remember me</label>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-      </form>
-      <div class="text-center mt-3">
-        <p>Don't have an account? <a href="{% url 'signupPage' %}">Sign up</a></p>
-        <p><a href="#">Forgot password?</a></p>
-      </div>
-    </div>
-  </div>
-</div> {% endcomment %}
-<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
 <script src="https://kit.fontawesome.com/1caad802f4.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>

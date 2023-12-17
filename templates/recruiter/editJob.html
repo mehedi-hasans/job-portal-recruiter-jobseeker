@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="text-center">Edit Job</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'updatePage' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for j in job %} 
+            
+                        <p>
+                           <label for="id_job_title">Job ID:</label>
+                           <input type="text" name="jobid" class="form-control" maxlength="100" required id="id_job_title" value='{{j.id}}'>
+                        </p>
+                        <p>
+                           <label for="id_job_title">Job Title:</label>
+                           <input type="text" name="title" class="form-control" maxlength="100" required id="id_job_title" value='{{j.title}}'>
+                        </p>
+                        <p>
+                           <label for="id_company_name">Company Name:</label>
+                           <input type="text" name="company_name" class="form-control" maxlength="100" required id="id_company_name" value='{{j.company_name}}'>
+                        </p>
+                        <p>
+                           <label for="id_location">Location:</label>
+                           <input type="text" name="location" class="form-control" maxlength="100" required id="id_location" value='{{j.location}}'>
+                        </p>
+                        <p>
+                           <label for="id_description">Description:</label>
+                           <textarea name="description" cols="40" rows="10" class="form-control" required id="id_description">{{j.description}}
+                           </textarea>
+                        </p>
+                        <p>
+                            {% if j.job_image %}
+                                <label for="id_job_image">Current Job Cover Image:</label>
+                                <img src="{{ j.job_image.url }}" alt="Job Cover Image" class="img-fluid">
+                                <label for="id_job_image">Update Job Cover Image:</label>
+                                <input type="file" name="job_image" class="form-control" accept="image/*">
+                            {% else %}
+                                <label for="id_job_image">Job Cover Image:</label>
+                                <input type="file" name="job_image" class="form-control" accept="image/*">
+                            {% endif %}
+                        </p>
+                        <button class='btn btn-success' type="submit">Update Job</button>
+                        {% endfor %}
+                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

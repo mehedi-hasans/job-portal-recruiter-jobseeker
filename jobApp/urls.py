@@ -9,5 +9,8 @@ urlpatterns = [
     path('dashboard', views.dashboard, name='dashboard'),
     path('view', views.viewJob, name='viewJob'),
     path('addJob', views.addJob, name='addJob'),
+    path('deletePage/<str:myid>', views.deletePage, name='deletePage'),
+    path('editPage/<str:myid>', views.editPage, name='editPage'),
+    path('updatePage', views.updatePage, name='updatePage'),
 
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
